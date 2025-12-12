@@ -18,3 +18,9 @@ Automated Project Diary Entry System.
    ```bash
    python diary_automation.py
    ```
+
+Prompt for ChatGPT for creating the excel for:
+files requried: Project Synopsys (other files), Excel file in the drectory.
+```bash
+Use this excel file template file to fill the details based on the attached synopsys. This record is used for the project diary entry in the VTU portal. Keep it consise and fill the entries for all the dates and fields. The hours keep it between 2-5 hours.
+```
