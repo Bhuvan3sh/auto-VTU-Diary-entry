@@ -34,7 +34,7 @@ with SB(uc=True) as sb:
 
     print("Navigated to Project Diary Entries page.")
 
-    excel_path = "Complete_Project_Diary.xlsx"
+    excel_path = "Complete_Blockchain_Project_Diary.xlsx"
     if not os.path.exists(excel_path):
         print(f"Error: Excel file not found at {excel_path}")
     else:
@@ -83,7 +83,7 @@ with SB(uc=True) as sb:
                 sb.execute_script(project_script)
                 sb.sleep(1)
 
-                print("Selecting Date...")
+                # print("Selecting Date...")
                 
                 js_month_val = target_date.month - 1
                 js_year_val = target_date.year
@@ -176,20 +176,32 @@ with SB(uc=True) as sb:
                 }})();
                 """
                 sb.execute_script(date_picker_script)
-                sb.sleep(2) 
-
-                sb.sleep(1)
-                print("Clicking Continue...")
-                sb.wait_for_element_visible("//button[contains(text(), 'Continue')]", by="xpath", timeout=10)
-                sb.click("//button[contains(text(), 'Continue')]", by="xpath")
                 sb.sleep(3) 
+
+                # Retry logic for clicking Continue
+                max_retries = 3
+                for attempt in range(max_retries):
+                    try:
+                        # print(f"Clicking Continue (Attempt {attempt + 1})...")
+                        sb.wait_for_element_visible("//button[contains(text(), 'Continue')]", by="xpath", timeout=5)
+                        sb.click("//button[contains(text(), 'Continue')]", by="xpath")
+                        
+                        # Check if successful by waiting for the next element
+                        sb.wait_for_element_visible('textarea[name="description"]', timeout=5)
+                        break # Success, exit loop
+                    except Exception:
+                        if attempt == max_retries - 1:
+                            print("Failed to navigate to description page after retries.")
+                            raise
+                        print("Retrying Continue click...")
+                        sb.sleep(2)
 
                 sb.type('textarea[name="description"]', work_summary)
                 sb.type('input[placeholder="e.g. 6.5"]', hours_worked)
                 sb.type('textarea[name="learnings"]', learnings)
                 sb.type('textarea[name="blockers"]', blockers)
 
-                print("Entering Skills...")
+                # print("Entering Skills...")
                 skill_script = """
                 (function selectSkillReact() {
                     const input = document.querySelector('.react-select__input');
@@ -218,24 +230,24 @@ with SB(uc=True) as sb:
                 sb.execute_script(skill_script)
                 sb.sleep(1)
 
-                print("Clicking Save...")
+                # print("Clicking Save...")
                 try:
                     sb.execute_script("document.evaluate(\"//button[contains(text(), 'Save')]\", document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue.click()")
                 except:
                     sb.click('button[type="submit"]')
                 
-                print("Waiting for save to complete...")
+                # print("Waiting for save to complete...")
                 sb.sleep(2) 
                 sb.sleep(1)
                 
-                print("Clicking Create Next...")
+                # print("Clicking Create Next...")
                 try:
                     sb.wait_for_element_visible("//a[contains(text(), 'Create') and contains(@href, '/dashboard/student/project-diary')]", by="xpath", timeout=10)
                     sb.click("//a[contains(text(), 'Create') and contains(@href, '/dashboard/student/project-diary')]", by="xpath")
                 except Exception as e:
                     sb.open("https://vtu.internyet.in/dashboard/student/project-diary")
 
-                sb.sleep(4)
+                sb.sleep(2)
                 
         except Exception as e:
             print(f"An error occurred during processing: {e}")
