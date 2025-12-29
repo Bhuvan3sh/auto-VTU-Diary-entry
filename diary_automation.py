@@ -5,18 +5,21 @@ from datetime import datetime
 import time
 
 print(r"""
-  ____  _                                         _      ____ ____ _____ 
- | __ )| |__  _   ___   ____ ___  _ __   ___  ___| |__  / ___|  _ \_   _|
- |  _ \| '_ \| | | \ \ / / _` | '_ \ / _ \/ __| '_ \ | |  _| |_) || |  
- | |_) | | | | |_| |\ V / (_| | | | |  __/\__ \ | | || |_| |  __/ | |  
- |____/|_| |_|\__,_| \_/ \__,_|_| |_|\___||___/_| |_(_)____|_|    |_|  
-                                                                       
-          >>> AUTOMATED BY BHUVANESH <<<
+$$$$$$$\  $$\   $$\ $$\   $$\ $$\    $$\  $$$$$$\  $$\   $$\ $$$$$$$$\  $$$$$$\  $$\   $$\        $$$$$$\  $$$$$$$\ $$$$$$$$\ 
+$$  __$$\ $$ |  $$ |$$ |  $$ |$$ |   $$ |$$  __$$\ $$$\  $$ |$$  _____|$$  __$$\ $$ |  $$ |      $$  __$$\ $$  __$$\\__$$  __|
+$$ |  $$ |$$ |  $$ |$$ |  $$ |$$ |   $$ |$$ /  $$ |$$$$\ $$ |$$ |      $$ /  \__|$$ |  $$ |      $$ /  \__|$$ |  $$ |  $$ |   
+$$$$$$$\ |$$$$$$$$ |$$ |  $$ |\$$\  $$  |$$$$$$$$ |$$ $$\$$ |$$$$$\    \$$$$$$\  $$$$$$$$ |      $$ |$$$$\ $$$$$$$  |  $$ |   
+$$  __$$\ $$  __$$ |$$ |  $$ | \$$\$$  / $$  __$$ |$$ \$$$$ |$$  __|    \____$$\ $$  __$$ |      $$ |\_$$ |$$  ____/   $$ |   
+$$ |  $$ |$$ |  $$ |$$ |  $$ |  \$$$  /  $$ |  $$ |$$ |\$$$ |$$ |      $$\   $$ |$$ |  $$ |      $$ |  $$ |$$ |        $$ |   
+$$$$$$$  |$$ |  $$ |\$$$$$$  |   \$  /   $$ |  $$ |$$ | \$$ |$$$$$$$$\ \$$$$$$  |$$ |  $$ |      \$$$$$$  |$$ |        $$ |   
+\_______/ \__|  \__| \______/     \_/    \__|  \__|\__|  \__|\________| \______/ \__|  \__|       \______/ \__|        \__|   
+                                                                                                                                                                                                                                                                                                          
+                                              >>> AUTOMATED BY BHUVANESH <<<
 """)
 time.sleep(5)
 
-user_mail = "YOURMAIL"
-user_passwd = "USERPASSWD"
+user_mail = "YOURMAIL" #Enter your VTU internyet Mail ID
+user_passwd = "USERPASSWD" #Enter your VTU internyet Passwd
 
 with SB(uc=True) as sb:
     login_url = "https://vtu.internyet.in/sign-in"
@@ -34,7 +37,7 @@ with SB(uc=True) as sb:
 
     print("Navigated to Project Diary Entries page.")
 
-    excel_path = "Complete_Blockchain_Project_Diary.xlsx"
+    excel_path = "Complete_Project_Diary.xlsx"
     if not os.path.exists(excel_path):
         print(f"Error: Excel file not found at {excel_path}")
     else:
