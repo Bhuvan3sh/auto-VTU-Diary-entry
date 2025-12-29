@@ -10,9 +10,9 @@ Automated Project Diary Entry System for VTU Internyet.
    ```
 
 2. **Configuration**: 
-   Open `diary_automation.py` and enter your credentials:
-   - `user_mail`: Your email address
-   - `user_passwd`: Your password
+   Open `diary_automation.py` and enter your credentials: 
+   - `user_mail`: Your email address in line 21
+   - `user_passwd`: Your password in line 22
 
 3. **Run the Automation**:
    ```bash
